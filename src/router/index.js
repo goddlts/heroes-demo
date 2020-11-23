@@ -6,6 +6,11 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    name: 'home',
+    path: '/',
+    redirect: '/heroes'
+  },
+  {
     path: '/heroes',
     name: 'heroes',
     component: () => import(/* webpackChunkName: "heroes" */ '../views/heroes/List.vue')
