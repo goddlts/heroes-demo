@@ -20,7 +20,7 @@
             <td>
               <a href="edit.html">edit</a>
               &nbsp;&nbsp;
-              <a href="javascript:window.confirm('Are you sure?')">delete</a>
+              <a href="javascript:void(0)" @click.prevent="handleDelete(hero.id)">delete</a>
             </td>
           </tr>
         </tbody>
@@ -49,6 +49,24 @@ export default {
         .then(res => {
           this.heroes = res.data
         })
+    },
+    handleDelete (id) {
+      // 先做提示
+      if (window.confirm('确定要删除该数据？')) {
+        axios
+          .delete(`http://localhost:3000/heroes/${id}`)
+          .then(res => {
+            if (res.status === 200) {
+              // 删除成功
+              // alert('删除成功')
+              // 重新加载列表
+              this.loadData()
+            } else {
+              // 删除失败
+              alert('删除失败')
+            }
+          })
+      }
     }
   }
 }
