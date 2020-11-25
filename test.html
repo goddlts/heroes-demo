@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    let arr = [1, 2, 3] // new Array(1, 2, 3)
+    
+    let arr1 = ['a', 'b', 'c']
+
+    // 原型对象，给所有同源的对象增加成员
+
+    // 原型是一个对象
+    // 类的原型(prototype) 上的成员，通过这个类创建的所有对象都可以共享
+    // console.log(Array.prototype)
+
+    Array.prototype.myJoin = function () {
+      // 在这个方法中的 this 是谁？
+      // this
+      let s = this[0]
+      for (let i = 1; i < this.length; i++) {
+        s += ',' + this[i]
+      }
+      return s
+    }
+
+    // 方法中的 this 指向，在该方法调用的时候才确定
+    // arr.myJoin()
+
+    console.log(arr.myJoin())
+
+
+
+  </script>
+</body>
+</html>

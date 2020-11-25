@@ -30,8 +30,6 @@
 </template>
 
 <script>
-// 导入 axios 模块
-import axios from 'axios'
 export default {
   data () {
     return {
@@ -44,8 +42,8 @@ export default {
   },
   methods: {
     loadData () {
-      axios
-        .get('http://localhost:3000/heroes')
+      this.axios
+        .get('heroes')
         .then(res => {
           this.heroes = res.data
         })
@@ -53,8 +51,8 @@ export default {
     handleDelete (id) {
       // 先做提示
       if (window.confirm('确定要删除该数据？')) {
-        axios
-          .delete(`http://localhost:3000/heroes/${id}`)
+        this.axios
+          .delete(`heroes/${id}`)
           .then(res => {
             if (res.status === 200) {
               // 删除成功

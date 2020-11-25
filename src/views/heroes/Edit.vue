@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
   data () {
     return {
@@ -40,8 +39,8 @@ export default {
   methods: {
     // 根据id加载英雄数据
     loadHeroById (id) {
-      axios
-        .get(`http://localhost:3000/heroes/${id}`)
+      this.axios
+        .get(`heroes/${id}`)
         .then(res => {
           const hero = res.data
           this.formData = hero
@@ -49,8 +48,8 @@ export default {
         })
     },
     handleEdit () {
-      axios
-        .put(`http://localhost:3000/heroes/${this.formData.id}`, this.formData)
+      this.axios
+        .put(`heroes/${this.formData.id}`, this.formData)
         .then(res => {
           if (res.status === 200) {
             // 修改成功
